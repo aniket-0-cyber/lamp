@@ -1,12 +1,12 @@
-# Lamp Bible, Lamp Lock and HoloVault
+# Wicklight Labs: Lamp Bible, Lamp Lock and HoloVault
 
-> Small, private iPhone apps. No accounts, no ads, no tracking. All are free to download with optional subscriptions.
+> Wicklight Labs makes small, private iPhone apps. No accounts, no ads, no tracking. All are free to download with optional subscriptions.
 
 ## Lamp Bible: Daily Verse
 
 Free iPhone Bible app with a daily verse widget for the Lock Screen and Home Screen, the KJV and World English Bible offline, audio Bible, reading plans, a prayer list, Sleep with Scripture, and Ask, AI answers that quote real verses checked word for word. Also in Spanish with the Reina-Valera 1909.
 
-- [Website](https://aniket-0-cyber.github.io/lamp/lampbible/): features, price, privacy and FAQ
+- [Website](https://wicklightlabs.com/lampbible/): features, price, privacy and FAQ
 - [App Store](https://apps.apple.com/us/app/lamp-bible-daily-verse/id6818715500)
 - Price: Lamp Bible is free to download, with the daily verse, widgets, the full Bible, audio and the prayer list free. Lamp Premium adds unlimited Ask, Sleep with Scripture, a reflection with every verse, every reading plan and all themes: $39.99 a year with a 7-day free trial, or $4.99 a week (US prices).
 - Privacy: No account, no ads and no tracking. Your prayers, notes, highlights and plans stay on your iPhone. Ask sends only the question you type, and only after you agree to it.
@@ -24,7 +24,7 @@ Common questions:
 
 Christian app blocker for iPhone built on Apple's Screen Time: chosen apps stay locked until you read a Bible verse, pray or read a chapter, then open for a set time. Strict mode, focus sessions, daily limits, schedules, reading plans, guided prayers, streaks and Circles with friends. No account, no ads.
 
-- [Website](https://aniket-0-cyber.github.io/lamp/lamplock/): features, price, privacy and FAQ
+- [Website](https://wicklightlabs.com/lamplock/): features, price, privacy and FAQ
 - [App Store](https://apps.apple.com/us/app/lamp-lock-bible-app-blocker/id6818823592)
 - Price: Lamp Lock is free to start: lock one app with today's verse. Lamp Lock Premium locks as many apps and categories as you like and adds strict mode, daily limits, schedules, focus sessions of any length and every plan: $39.99 a year with a 7-day free trial, $5.99 a week, or $79.99 once for life (US prices).
 - Privacy: Lamp Lock uses Apple's Screen Time, so it never sees which apps you use or for how long. No account, no ads, no analytics. Everything stays on your phone unless you choose to use Ask or Circles.
@@ -42,7 +42,7 @@ Common questions:
 
 iPhone TCG card scanner for Pokémon, One Piece, Disney Lorcana and Yu-Gi-Oh! cards: scan one card, a stack or 200 photos, see today's market price and a year of price history, track collection value like a portfolio, open packs with Pack Rip, set checklists, wishlist price alerts and a Christmas list to share. No account, no ads.
 
-- [Website](https://aniket-0-cyber.github.io/lamp/holovault/): features, price, privacy and FAQ
+- [Website](https://wicklightlabs.com/holovault/): features, price, privacy and FAQ
 - [App Store](https://apps.apple.com/us/app/tcg-card-scanner-holovault/id6819069009)
 - Price: HoloVault is free to try with 25 scans and 25 cards. HoloVault Pro gives unlimited scans and cards, Performance, full price history, price alerts and every theme: $39.99 a year for every game with a 7-day free trial, $19.99 a year for one game, or $5.99 a week (US prices).
 - Privacy: No account, no ads, no tracking. To identify a card, only the cropped photo of that card is sent, read by a third-party AI service and not stored on our server. Prices come from licensed market data, never from AI.

@@ -10,7 +10,8 @@ import json
 from datetime import date
 from pathlib import Path
 
-SITE = "https://aniket-0-cyber.github.io/lamp"
+SITE = "https://wicklightlabs.com"
+STUDIO = "Wicklight Labs"
 ROOT = Path(__file__).resolve().parent.parent
 TODAY = date.today().isoformat()
 # Apple's official badge (developer.apple.com/app-store/marketing/guidelines), kept in assets/.
@@ -283,6 +284,7 @@ def json_ld(app):
         "image": base + "img/icon-512.png",
         "screenshot": [base + f"img/{n}.jpg" for n, _ in app["shots"]],
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free to download, with optional in-app subscriptions."},
+        "publisher": {"@type": "Organization", "name": STUDIO, "url": f"{SITE}/"},
     }
     faq = {
         "@context": "https://schema.org",
@@ -377,6 +379,7 @@ def app_page(app):
 </main>
 <footer>
   <div class="links"><a href="{app['store']}">{esc(app['name'])} on the App Store</a><a href="support/">Support</a><a href="privacy/">Privacy Policy</a>{'<a href="terms/">Terms of Use</a>' if (ROOT / app['slug'] / 'terms').exists() else ''}<a href="../">All apps</a></div>
+  <p>Made by <a href="../">Wicklight Labs</a>.</p>
   {notice}
 </footer>
 </div>
@@ -401,12 +404,14 @@ def home_page():
         "@context": "https://schema.org", "@type": "ItemList",
         "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f"{SITE}/{a['slug']}/", "name": a["store_name"]} for i, a in enumerate(APPS)],
     }
-    extra = f'<script type="application/ld+json">{json.dumps(listing, ensure_ascii=False)}</script>'
-    return head("Lamp Bible, Lamp Lock and HoloVault: iPhone apps", "Small, private iPhone apps: Lamp Bible (a daily Bible verse widget), Lamp Lock (a Christian app blocker) and HoloVault (a TCG card scanner).",
+    org = {"@context": "https://schema.org", "@type": "Organization", "name": STUDIO, "url": f"{SITE}/", "logo": f"{SITE}/lampbible/img/icon-512.png"}
+    extra = "\n".join(f'<script type="application/ld+json">{json.dumps(block, ensure_ascii=False)}</script>' for block in (org, listing))
+    return head("Wicklight Labs: small, private iPhone apps", "Wicklight Labs makes small, private iPhone apps: Lamp Bible (a daily Bible verse widget), Lamp Lock (a Christian app blocker) and HoloVault (a TCG card scanner).",
                 f"{SITE}/", f"{SITE}/lampbible/img/icon-512.png", style, extra) + f"""<body>
 <div class="wrap">
 <main>
 <section class="plain">
+  <p style="font-weight:700; letter-spacing:0.08em; text-transform:uppercase; font-size:13px; margin:28px 0 10px;">Wicklight Labs</p>
   <div class="accentbar"></div>
   <h1 style="font-family:'New York', Georgia, serif; font-size:40px; margin:0 0 8px;">Small, private apps for iPhone</h1>
   <p>No accounts, no ads, no tracking. Each app does one thing well.</p>
@@ -423,6 +428,14 @@ def home_page():
 """
 
 
+# Every crawler is welcome, search engines and AI assistants alike.
+ROBOTS = f"""User-agent: *
+Allow: /
+
+Sitemap: {SITE}/sitemap.xml
+"""
+
+
 def sitemap():
     urls = [f"{SITE}/"]
     for a in APPS:
@@ -435,9 +448,9 @@ def sitemap():
 
 
 def llms():
-    parts = ["# Lamp Bible, Lamp Lock and HoloVault",
+    parts = ["# Wicklight Labs: Lamp Bible, Lamp Lock and HoloVault",
              "",
-             "> Small, private iPhone apps. No accounts, no ads, no tracking. All are free to download with optional subscriptions.",
+             "> Wicklight Labs makes small, private iPhone apps. No accounts, no ads, no tracking. All are free to download with optional subscriptions.",
              ""]
     for a in APPS:
         parts += [f"## {a['store_name']}", "", a["summary"], "",
@@ -456,4 +469,6 @@ if __name__ == "__main__":
     (ROOT / "index.html").write_text(home_page())
     (ROOT / "sitemap.xml").write_text(sitemap())
     (ROOT / "llms.txt").write_text(llms())
+    (ROOT / "robots.txt").write_text(ROBOTS)
+    (ROOT / "CNAME").write_text("wicklightlabs.com\n")
     print("wrote", ", ".join([a["slug"] for a in APPS] + ["index.html", "sitemap.xml", "llms.txt"]))
