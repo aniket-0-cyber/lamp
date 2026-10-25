@@ -3,41 +3,125 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Help · Lamp Lock</title>
-<style>:root { --text:#1B1F3A; --muted:#5d6282; --accent:#8A5A12; --bg:#F7F3EA; }
-@media (prefers-color-scheme: dark) { :root { --text:#FFF4DC; --muted:#b9b6c9; --accent:#F2C56B; --bg:#0E1130; } }
-body { margin:0; background:var(--bg); color:var(--text); font:17px/1.6 -apple-system, system-ui, sans-serif; }
-main { max-width:680px; margin:0 auto; padding:32px 20px 64px; }
-h1 { font-family:"New York", Georgia, serif; font-size:2rem; margin:0 0 4px; }
-h2 { font-family:"New York", Georgia, serif; font-size:1.25rem; margin-top:2rem; }
-p.updated { color:var(--muted); margin-top:0; }
+<title>Lamp Lock: Christian app blocker that unlocks your apps after a Bible verse</title>
+<meta name="description" content="Christian app blocker for iPhone built on Apple&#x27;s Screen Time: chosen apps stay locked until you read a Bible verse, pray or read a chapter, then open for a set time. Strict mode, focus sessions, daily limits, schedules, reading plans, guided prayers, streaks and Circles with friends. No account, no ads.">
+<link rel="canonical" href="https://aniket-0-cyber.github.io/lamp/lamplock/">
+<link rel="alternate" type="text/plain" href="https://aniket-0-cyber.github.io/lamp/llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lamp Lock: Christian app blocker that unlocks your apps after a Bible verse">
+<meta property="og:description" content="Christian app blocker for iPhone built on Apple&#x27;s Screen Time: chosen apps stay locked until you read a Bible verse, pray or read a chapter, then open for a set time. Strict mode, focus sessions, daily limits, schedules, reading plans, guided prayers, streaks and Circles with friends. No account, no ads.">
+<meta property="og:url" content="https://aniket-0-cyber.github.io/lamp/lamplock/">
+<meta property="og:image" content="https://aniket-0-cyber.github.io/lamp/lamplock/img/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="https://aniket-0-cyber.github.io/lamp/lamplock/img/icon-512.png">
+<style>
+:root { --bg:#0E1630; --text:#F4EEDF; --muted:#AEB4C6; --accent:#E8C27A; --card:#16203F; --foil:#E8C27A; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0E1630; --text:#F4EEDF; --muted:#AEB4C6; --accent:#E8C27A; --card:#16203F; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:17px/1.6 -apple-system, system-ui, "Segoe UI", sans-serif; }
 a { color:var(--accent); }
-li { margin:6px 0; }
+.wrap { max-width:1040px; margin:0 auto; padding:0 20px; }
+header.top { display:flex; align-items:center; gap:12px; padding:18px 0; }
+header.top img { width:40px; height:40px; border-radius:10px; }
+header.top .brand { font-weight:700; font-size:18px; text-decoration:none; color:var(--text); }
+header.top nav { margin-left:auto; display:flex; gap:16px; font-size:15px; }
+header.top nav a { color:var(--muted); text-decoration:none; }
+.hero { display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; padding:36px 0 24px; }
+.hero h1 { font-family:"New York", "Iowan Old Style", Georgia, serif; font-size:clamp(32px, 5vw, 52px); line-height:1.1; margin:0 0 16px; letter-spacing:-0.01em; }
+.hero p.lead { font-size:19px; color:var(--muted); margin:0 0 24px; }
+.hero .phone img { width:100%; max-width:340px; display:block; margin:0 auto; border-radius:28px; box-shadow:0 30px 60px rgba(0,0,0,0.25); }
+.badge img { height:54px; }
+.meta { font-size:14px; color:var(--muted); margin-top:10px; }
+.shots { display:flex; gap:16px; overflow-x:auto; padding:20px 0 28px; scroll-snap-type:x mandatory; }
+.shots figure { margin:0; flex:0 0 220px; scroll-snap-align:start; }
+.shots img { width:220px; border-radius:20px; display:block; }
+.shots figcaption { font-size:13px; color:var(--muted); margin-top:8px; }
+section { padding:24px 0; }
+h2 { font-family:"New York", "Iowan Old Style", Georgia, serif; font-size:28px; margin:0 0 18px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; }
+.card { background:var(--card); border-radius:20px; padding:20px 22px; border:1px solid rgba(127,127,127,0.18); }
+.card h3 { margin:0 0 8px; font-size:18px; }
+.card ul { margin:0; padding-left:20px; }
+.card li { margin:6px 0; color:var(--muted); }
+.plain p { color:var(--muted); max-width:760px; }
+details { background:var(--card); border-radius:16px; padding:14px 18px; margin:10px 0; border:1px solid rgba(127,127,127,0.18); }
+summary { font-weight:600; cursor:pointer; }
+details p { color:var(--muted); margin:10px 0 2px; }
+.others { display:flex; gap:14px; flex-wrap:wrap; }
+.others a { display:flex; align-items:center; gap:10px; background:var(--card); border-radius:16px; padding:10px 14px; text-decoration:none; color:var(--text); border:1px solid rgba(127,127,127,0.18); }
+.others img { width:36px; height:36px; border-radius:9px; }
+footer { padding:28px 0 48px; font-size:14px; color:var(--muted); }
+footer .links { display:flex; gap:18px; flex-wrap:wrap; margin-bottom:10px; }
+.accentbar { height:4px; width:56px; border-radius:2px; background:var(--foil); margin-bottom:18px; }
+@media (max-width: 760px) {
+  .hero { grid-template-columns:1fr; gap:24px; padding-top:16px; }
+  .hero .phone img { max-width:220px; }
+  header.top nav { gap:12px; font-size:14px; }
+}
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Lamp Lock: Bible App Blocker", "alternateName": "Lamp Lock", "description": "Christian app blocker for iPhone built on Apple's Screen Time: chosen apps stay locked until you read a Bible verse, pray or read a chapter, then open for a set time. Strict mode, focus sessions, daily limits, schedules, reading plans, guided prayers, streaks and Circles with friends. No account, no ads.", "url": "https://aniket-0-cyber.github.io/lamp/lamplock/", "operatingSystem": "iOS 18.0 or later", "applicationCategory": "LifestyleApplication", "installUrl": "https://apps.apple.com/us/app/lamp-lock-bible-app-blocker/id6818823592", "downloadUrl": "https://apps.apple.com/us/app/lamp-lock-bible-app-blocker/id6818823592", "image": "https://aniket-0-cyber.github.io/lamp/lamplock/img/icon-512.png", "screenshot": ["https://aniket-0-cyber.github.io/lamp/lamplock/img/1.jpg", "https://aniket-0-cyber.github.io/lamp/lamplock/img/2.jpg", "https://aniket-0-cyber.github.io/lamp/lamplock/img/3.jpg", "https://aniket-0-cyber.github.io/lamp/lamplock/img/4.jpg", "https://aniket-0-cyber.github.io/lamp/lamplock/img/5.jpg"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free to download, with optional in-app subscriptions."}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is there an app that makes me read the Bible before opening Instagram or TikTok?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Lamp Lock locks the apps you choose with Apple's Screen Time. When you open one, you read today's verse (or pray, or read a chapter) first, and then the app opens for 15 minutes."}}, {"@type": "Question", "name": "What is the best Christian app blocker for iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Lamp Lock is a Christian app blocker that puts a Bible verse between you and your most distracting apps. It adds strict mode, focus sessions, daily limits and reading plans, with no account and no ads, and the first app is free to lock."}}, {"@type": "Question", "name": "Can I lock apps until I pray?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Instead of reading the verse you can pray a short guided prayer, written for mornings, anxious thoughts, focus or rest, to unlock your apps."}}, {"@type": "Question", "name": "Does Lamp Lock see what I do on my phone?", "acceptedAnswer": {"@type": "Answer", "text": "No. Lamp Lock works through Apple's Screen Time, which keeps app names and usage on the device. Lamp Lock never sees which apps you use and has no analytics."}}, {"@type": "Question", "name": "Is Lamp Lock free?", "acceptedAnswer": {"@type": "Answer", "text": "Lamp Lock is free to start and locks one app with today's verse. Premium ($39.99 a year with a 7-day free trial, $5.99 a week, or $79.99 once, US prices) locks any number of apps and adds strict mode, limits and schedules."}}, {"@type": "Question", "name": "Can I do it with friends or my small group?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Circles lets you share your streak with friends, family or a small group using a code. Only a nickname and your streak are shared, and only if you join."}}]}</script>
 </head>
-<body><main>
-<h1>Lamp Lock Help</h1>
-<p class="updated">Lamp Lock: Bible App Blocker</p>
-
-<h2>My apps didn't lock</h2>
-<p>Open Lamp Lock and check that “Lock my apps” is on in Settings and that Screen Time access is allowed (iPhone Settings › Screen Time › Apps with Screen Time Access). Then check you have picked at least one app.</p>
-
-<h2>The lock screen didn't open Lamp Lock</h2>
-<p>On iOS versions before 26.5 the lock screen sends a notification to tap instead. Turn on notifications for Lamp Lock, or open Lamp Lock from your Home Screen.</p>
-
-<h2>I need an app right now</h2>
-<p>On the unlock screen, tap “Emergency unlock” (three a day). In strict mode there are no emergency unlocks, by design.</p>
-
-<h2>How do I turn off strict mode?</h2>
-<p>Settings › Strict mode, then turn it off. It ends after the cool-down you chose (1, 8 or 24 hours).</p>
-
-<h2>Cancel a subscription</h2>
-<p>iPhone Settings › your name › Subscriptions › Lamp Lock.</p>
-
-<h2>Delete my Circles data</h2>
-<p>In Lamp Lock: Settings › Circles › Delete my Circles data.</p>
-
-<h2>Contact</h2>
-<p>Write to <a href="mailto:aniket84792@gmail.com">aniket84792@gmail.com</a>. We answer every message.</p>
-</main></body>
+<body>
+<div class="wrap">
+<header class="top">
+  <img src="img/icon.png" alt="Lamp Lock icon" width="40" height="40">
+  <a class="brand" href="./">Lamp Lock</a>
+  <nav><a href="support/">Support</a><a href="privacy/">Privacy</a></nav>
+</header>
+<main>
+<div class="hero">
+  <div>
+    <div class="accentbar"></div>
+    <h1>Your social apps wait until you&#x27;ve read today&#x27;s verse.</h1>
+    <p class="lead">Lamp Lock is a Christian screen time app for iPhone. You choose the apps that take your time, like Instagram, TikTok or YouTube; when you open one, a lock screen appears instead. Read today&#x27;s Bible verse, pray a short prayer or read a chapter, and your apps open for 15 minutes.</p>
+    <a class="badge" href="https://apps.apple.com/us/app/lamp-lock-bible-app-blocker/id6818823592"><img src="../assets/app-store-badge.svg" alt="Download Lamp Lock: Bible App Blocker on the App Store" height="54"></a>
+    <p class="meta">Free on iPhone · iOS 18 or later · No account, no ads</p>
+  </div>
+  <div class="phone"><img src="img/1.jpg" alt="The lock screen over a locked app" width="340"></div>
+</div>
+<div class="shots" aria-label="Screenshots">
+<figure><img src="img/2.jpg" alt="Reading today&#x27;s verse to unlock" width="220" loading="lazy"><figcaption>Reading today&#x27;s verse to unlock</figcaption></figure>
+<figure><img src="img/3.jpg" alt="The olive tree and lock widgets" width="220" loading="lazy"><figcaption>The olive tree and lock widgets</figcaption></figure>
+<figure><img src="img/4.jpg" alt="A focus session" width="220" loading="lazy"><figcaption>A focus session</figcaption></figure>
+<figure><img src="img/5.jpg" alt="Circles with friends" width="220" loading="lazy"><figcaption>Circles with friends</figcaption></figure>
+</div>
+<section>
+  <h2>What Lamp Lock does</h2>
+  <div class="grid">
+<div class="card"><h3>How it works</h3><ul><li>Pick the apps that take your time</li><li>Open one and your lock screen appears instead</li><li>Read today&#x27;s verse, answer a question about it, pray a short guided prayer, read your Bible for a few minutes, or show your printed Bible to the camera</li><li>Your apps open for 15 minutes, then lock again</li></ul></div>
+<div class="card"><h3>Built to change the habit</h3><ul><li>Strict mode: a lock that can&#x27;t be switched off on a whim, with a cool-down you choose in advance</li><li>Focus sessions, daily limits, and schedules for mornings and bedtime</li><li>A pause that grows with every unlock, and a cap on unlocks a day</li><li>Your real screen time, today and this week</li></ul></div>
+<div class="card"><h3>More than a lock</h3><ul><li>The whole Bible with search: King James Version and World English Bible</li><li>Reading plans, one chapter a day, including Advent and a 40-day challenge</li><li>Guided prayers for mornings, anxious thoughts, focus and rest, and a private prayer journal</li><li>An olive tree that grows on your Home and Lock Screen with every day you read</li></ul></div>
+<div class="card"><h3>Together, if you want</h3><ul><li>Circles: share your streak with friends, family or a small group</li><li>Ask: Bible questions answered with real, cited scripture</li></ul></div>
+  </div>
+</section>
+<section class="plain">
+  <h2>Price</h2>
+  <p>Lamp Lock is free to start: lock one app with today&#x27;s verse. Lamp Lock Premium locks as many apps and categories as you like and adds strict mode, daily limits, schedules, focus sessions of any length and every plan: $39.99 a year with a 7-day free trial, $5.99 a week, or $79.99 once for life (US prices).</p>
+  <h2>Privacy</h2>
+  <p>Lamp Lock uses Apple&#x27;s Screen Time, so it never sees which apps you use or for how long. No account, no ads, no analytics. Everything stays on your phone unless you choose to use Ask or Circles. <a href="privacy/">Privacy Policy</a></p>
+</section>
+<section>
+  <h2>Questions</h2>
+<details><summary>Is there an app that makes me read the Bible before opening Instagram or TikTok?</summary><p>Yes. Lamp Lock locks the apps you choose with Apple&#x27;s Screen Time. When you open one, you read today&#x27;s verse (or pray, or read a chapter) first, and then the app opens for 15 minutes.</p></details>
+<details><summary>What is the best Christian app blocker for iPhone?</summary><p>Lamp Lock is a Christian app blocker that puts a Bible verse between you and your most distracting apps. It adds strict mode, focus sessions, daily limits and reading plans, with no account and no ads, and the first app is free to lock.</p></details>
+<details><summary>Can I lock apps until I pray?</summary><p>Yes. Instead of reading the verse you can pray a short guided prayer, written for mornings, anxious thoughts, focus or rest, to unlock your apps.</p></details>
+<details><summary>Does Lamp Lock see what I do on my phone?</summary><p>No. Lamp Lock works through Apple&#x27;s Screen Time, which keeps app names and usage on the device. Lamp Lock never sees which apps you use and has no analytics.</p></details>
+<details><summary>Is Lamp Lock free?</summary><p>Lamp Lock is free to start and locks one app with today&#x27;s verse. Premium ($39.99 a year with a 7-day free trial, $5.99 a week, or $79.99 once, US prices) locks any number of apps and adds strict mode, limits and schedules.</p></details>
+<details><summary>Can I do it with friends or my small group?</summary><p>Yes. Circles lets you share your streak with friends, family or a small group using a code. Only a nickname and your streak are shared, and only if you join.</p></details>
+</section>
+<section>
+  <h2>More apps</h2>
+  <div class="others">
+<a href="../lampbible/"><img src="../lampbible/img/icon.png" alt="" width="36" height="36"><span>Lamp Bible</span></a>
+<a href="../holovault/"><img src="../holovault/img/icon.png" alt="" width="36" height="36"><span>HoloVault</span></a>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="links"><a href="https://apps.apple.com/us/app/lamp-lock-bible-app-blocker/id6818823592">Lamp Lock on the App Store</a><a href="support/">Support</a><a href="privacy/">Privacy Policy</a><a href="../">All apps</a></div>
+  
+</footer>
+</div>
+</body>
 </html>

@@ -3,46 +3,126 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Support · Lamp Bible</title>
-<style>:root { --text:#2E2420; --muted:#7a6a60; --accent:#B8652F; --bg:#FCF7F1; }
-@media (prefers-color-scheme: dark) { :root { --text:#FAF2E3; --muted:#c9b9a3; --accent:#F5CC85; --bg:#14110F; } }
-body { margin:0; background:var(--bg); color:var(--text); font:17px/1.6 -apple-system, system-ui, sans-serif; }
-main { max-width:680px; margin:0 auto; padding:32px 20px 64px; }
-h1 { font-family:"New York", Georgia, serif; font-size:2rem; margin:0 0 4px; }
-h2 { font-family:"New York", Georgia, serif; font-size:1.25rem; margin-top:2rem; }
-p.updated { color:var(--muted); margin-top:0; }
+<title>Lamp Bible: daily Bible verse widget for iPhone, KJV and AI Bible study</title>
+<meta name="description" content="Free iPhone Bible app with a daily verse widget for the Lock Screen and Home Screen, the KJV and World English Bible offline, audio Bible, reading plans, a prayer list, Sleep with Scripture, and Ask, AI answers that quote real verses checked word for word. Also in Spanish with the Reina-Valera 1909.">
+<link rel="canonical" href="https://aniket-0-cyber.github.io/lamp/lampbible/">
+<link rel="alternate" type="text/plain" href="https://aniket-0-cyber.github.io/lamp/llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lamp Bible: daily Bible verse widget for iPhone, KJV and AI Bible study">
+<meta property="og:description" content="Free iPhone Bible app with a daily verse widget for the Lock Screen and Home Screen, the KJV and World English Bible offline, audio Bible, reading plans, a prayer list, Sleep with Scripture, and Ask, AI answers that quote real verses checked word for word. Also in Spanish with the Reina-Valera 1909.">
+<meta property="og:url" content="https://aniket-0-cyber.github.io/lamp/lampbible/">
+<meta property="og:image" content="https://aniket-0-cyber.github.io/lamp/lampbible/img/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="https://aniket-0-cyber.github.io/lamp/lampbible/img/icon-512.png">
+<style>
+:root { --bg:#FCF7F1; --text:#2E2420; --muted:#7A6A60; --accent:#B8652F; --card:#FFFFFF; --foil:#B8652F; }
+@media (prefers-color-scheme: dark) { :root { --bg:#14110F; --text:#FAF2E3; --muted:#C9B9A3; --accent:#F5CC85; --card:#1F1A17; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:17px/1.6 -apple-system, system-ui, "Segoe UI", sans-serif; }
 a { color:var(--accent); }
-li { margin:6px 0; }
+.wrap { max-width:1040px; margin:0 auto; padding:0 20px; }
+header.top { display:flex; align-items:center; gap:12px; padding:18px 0; }
+header.top img { width:40px; height:40px; border-radius:10px; }
+header.top .brand { font-weight:700; font-size:18px; text-decoration:none; color:var(--text); }
+header.top nav { margin-left:auto; display:flex; gap:16px; font-size:15px; }
+header.top nav a { color:var(--muted); text-decoration:none; }
+.hero { display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; padding:36px 0 24px; }
+.hero h1 { font-family:"New York", "Iowan Old Style", Georgia, serif; font-size:clamp(32px, 5vw, 52px); line-height:1.1; margin:0 0 16px; letter-spacing:-0.01em; }
+.hero p.lead { font-size:19px; color:var(--muted); margin:0 0 24px; }
+.hero .phone img { width:100%; max-width:340px; display:block; margin:0 auto; border-radius:28px; box-shadow:0 30px 60px rgba(0,0,0,0.25); }
+.badge img { height:54px; }
+.meta { font-size:14px; color:var(--muted); margin-top:10px; }
+.shots { display:flex; gap:16px; overflow-x:auto; padding:20px 0 28px; scroll-snap-type:x mandatory; }
+.shots figure { margin:0; flex:0 0 220px; scroll-snap-align:start; }
+.shots img { width:220px; border-radius:20px; display:block; }
+.shots figcaption { font-size:13px; color:var(--muted); margin-top:8px; }
+section { padding:24px 0; }
+h2 { font-family:"New York", "Iowan Old Style", Georgia, serif; font-size:28px; margin:0 0 18px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; }
+.card { background:var(--card); border-radius:20px; padding:20px 22px; border:1px solid rgba(127,127,127,0.18); }
+.card h3 { margin:0 0 8px; font-size:18px; }
+.card ul { margin:0; padding-left:20px; }
+.card li { margin:6px 0; color:var(--muted); }
+.plain p { color:var(--muted); max-width:760px; }
+details { background:var(--card); border-radius:16px; padding:14px 18px; margin:10px 0; border:1px solid rgba(127,127,127,0.18); }
+summary { font-weight:600; cursor:pointer; }
+details p { color:var(--muted); margin:10px 0 2px; }
+.others { display:flex; gap:14px; flex-wrap:wrap; }
+.others a { display:flex; align-items:center; gap:10px; background:var(--card); border-radius:16px; padding:10px 14px; text-decoration:none; color:var(--text); border:1px solid rgba(127,127,127,0.18); }
+.others img { width:36px; height:36px; border-radius:9px; }
+footer { padding:28px 0 48px; font-size:14px; color:var(--muted); }
+footer .links { display:flex; gap:18px; flex-wrap:wrap; margin-bottom:10px; }
+.accentbar { height:4px; width:56px; border-radius:2px; background:var(--foil); margin-bottom:18px; }
+@media (max-width: 760px) {
+  .hero { grid-template-columns:1fr; gap:24px; padding-top:16px; }
+  .hero .phone img { max-width:220px; }
+  header.top nav { gap:12px; font-size:14px; }
+}
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Lamp Bible: Daily Verse", "alternateName": "Lamp Bible", "description": "Free iPhone Bible app with a daily verse widget for the Lock Screen and Home Screen, the KJV and World English Bible offline, audio Bible, reading plans, a prayer list, Sleep with Scripture, and Ask, AI answers that quote real verses checked word for word. Also in Spanish with the Reina-Valera 1909.", "url": "https://aniket-0-cyber.github.io/lamp/lampbible/", "operatingSystem": "iOS 18.0 or later", "applicationCategory": "ReferenceApplication", "installUrl": "https://apps.apple.com/us/app/lamp-bible-daily-verse/id6818715500", "downloadUrl": "https://apps.apple.com/us/app/lamp-bible-daily-verse/id6818715500", "image": "https://aniket-0-cyber.github.io/lamp/lampbible/img/icon-512.png", "screenshot": ["https://aniket-0-cyber.github.io/lamp/lampbible/img/1.jpg", "https://aniket-0-cyber.github.io/lamp/lampbible/img/2.jpg", "https://aniket-0-cyber.github.io/lamp/lampbible/img/3.jpg", "https://aniket-0-cyber.github.io/lamp/lampbible/img/4.jpg", "https://aniket-0-cyber.github.io/lamp/lampbible/img/5.jpg"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free to download, with optional in-app subscriptions."}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is there an app that puts a Bible verse on my iPhone Lock Screen?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Lamp Bible has Lock Screen and Home Screen widgets that show a new Bible verse every day. Add the widget once and the verse changes on its own each morning, with no internet needed."}}, {"@type": "Question", "name": "Does Lamp Bible have the King James Version?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Lamp Bible includes the King James Version (KJV) and the World English Bible, both stored on your phone so they work offline. The Spanish edition uses the Reina-Valera 1909."}}, {"@type": "Question", "name": "Is Lamp Bible free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The daily verse, widgets, the full Bible, audio and the prayer list are free. Lamp Premium ($39.99 a year with a 7-day free trial, or $4.99 a week in the US) adds unlimited Ask, Sleep with Scripture, every reading plan and all themes."}}, {"@type": "Question", "name": "Can an AI Bible app give wrong verses?", "acceptedAnswer": {"@type": "Answer", "text": "In Lamp Bible's Ask, every verse an answer cites is checked against the Bible text and replaced with the exact words before you see it, so the scripture you read is always the real text."}}, {"@type": "Question", "name": "Does Lamp Bible work without internet?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Bible, the daily verse, the widgets, plans and the prayer list all work offline. Only Ask needs a connection."}}, {"@type": "Question", "name": "Is there a Bible in a Year plan?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Lamp Bible has The Bible in a Year (365 days), the New Testament, and shorter plans such as John in 21 Days and Proverbs in 31 Days."}}]}</script>
 </head>
-<body><main>
-<h1>Support</h1>
-<p class="updated">Lamp Bible: Daily Verse</p>
-
-<p>Questions, ideas or something not working? Email <a href="mailto:aniket84792@gmail.com?subject=Lamp%20Bible%20support">aniket84792@gmail.com</a>. We read every message.</p>
-
-<h2>How do I add the verse widget?</h2>
-<p>Touch and hold an empty spot on your Home Screen, tap <strong>Edit</strong> → <strong>Add Widget</strong>, search for <strong>Lamp Bible</strong>, pick a size and tap <strong>Add Widget</strong>. For the Lock Screen, touch and hold the Lock Screen, tap <strong>Customize</strong> → <strong>Lock Screen</strong>, then tap the widget area and choose Lamp Bible.</p>
-
-<h2>What's free and what's Premium?</h2>
-<p>Free forever: the daily verse and widgets, the full Bible (World English Bible and King James Version, offline), search, Listen, highlights and notes, memory verses, your prayer list, the one-minute calm, today's reflection, two reading plans, three themes and 5 Ask questions every month. Premium adds unlimited Ask questions, Sleep with Scripture, a reflection with every verse, every reading plan, every topic and prayer, all themes, more reminders and video sharing.</p>
-
-<h2>Can Listen keep playing with the screen locked?</h2>
-<p>Yes. Tap <strong>Listen</strong> in any chapter; it keeps reading with the screen locked or in another app and moves on to the next chapter. Use the Lock Screen controls to pause, or the small player above the tabs in the app. For a more natural voice, download an Enhanced voice in the Settings app → Accessibility → Spoken Content → Voices → English.</p>
-
-<h2>Where are my prayers, highlights and notes kept?</h2>
-<p>Only on your phone. They are not uploaded anywhere, and prayer reminders never show what you're praying for. Deleting the app deletes them.</p>
-
-<h2>How do I cancel or manage my subscription?</h2>
-<p>Subscriptions are handled by Apple. Open the <strong>Settings</strong> app → your name → <strong>Subscriptions</strong> → Lamp Bible. Cancel at least 24 hours before the renewal date to avoid being charged. Refunds are requested from Apple at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
-
-<h2>I paid, but Premium isn't showing</h2>
-<p>In Lamp Bible, open <strong>Settings</strong> → <strong>Restore Purchases</strong> while signed in with the same Apple Account you used to buy.</p>
-
-<h2>Where do Ask's answers come from?</h2>
-<p>Ask searches the World English Bible for passages that fit your question, and Google's Gemini AI writes a short answer that quotes them. Every verse shown is the exact Bible text, checked on our server; the AI never writes scripture. Answers can still be imperfect, so read the passages for yourself and talk with your pastor or a trusted person about important decisions. If you are in danger, call your local emergency number.</p>
-
-<h2>Is my data stored?</h2>
-<p>No accounts, no tracking. Your favorites, plans and conversations stay on your phone. Read the <a href="privacy/">Privacy Policy</a> and <a href="terms/">Terms of Use</a>.</p>
-</main></body>
+<body>
+<div class="wrap">
+<header class="top">
+  <img src="img/icon.png" alt="Lamp Bible icon" width="40" height="40">
+  <a class="brand" href="./">Lamp Bible</a>
+  <nav><a href="support/">Support</a><a href="privacy/">Privacy</a><a href="terms/">Terms</a></nav>
+</header>
+<main>
+<div class="hero">
+  <div>
+    <div class="accentbar"></div>
+    <h1>A daily Bible verse on your Lock Screen, and the whole Bible offline.</h1>
+    <p class="lead">Lamp Bible is a free iPhone app for Christians who want to start each day in the Word. It puts a new verse on your Lock Screen and Home Screen every day, gives you the King James Version and the World English Bible with no internet needed, and answers your questions with real, cited scripture.</p>
+    <a class="badge" href="https://apps.apple.com/us/app/lamp-bible-daily-verse/id6818715500"><img src="../assets/app-store-badge.svg" alt="Download Lamp Bible: Daily Verse on the App Store" height="54"></a>
+    <p class="meta">Free on iPhone · iOS 18 or later · No account, no ads</p>
+  </div>
+  <div class="phone"><img src="img/1.jpg" alt="Bible verse widgets on the Home Screen and Lock Screen" width="340"></div>
+</div>
+<div class="shots" aria-label="Screenshots">
+<figure><img src="img/2.jpg" alt="Today&#x27;s verse with a reflection" width="220" loading="lazy"><figcaption>Today&#x27;s verse with a reflection</figcaption></figure>
+<figure><img src="img/3.jpg" alt="Ask: an answer quoting real Bible verses" width="220" loading="lazy"><figcaption>Ask: an answer quoting real Bible verses</figcaption></figure>
+<figure><img src="img/4.jpg" alt="Reading plans" width="220" loading="lazy"><figcaption>Reading plans</figcaption></figure>
+<figure><img src="img/5.jpg" alt="A private prayer list" width="220" loading="lazy"><figcaption>A private prayer list</figcaption></figure>
+</div>
+<section>
+  <h2>What Lamp Bible does</h2>
+  <div class="grid">
+<div class="card"><h3>A verse wherever you look</h3><ul><li>A new verse every day on Lock Screen and Home Screen widgets, in a sky that follows your day</li><li>A short reflection and prayer with today&#x27;s verse</li><li>Gentle reminders at the times you choose, and milestones for your days in the Word</li></ul></div>
+<div class="card"><h3>The whole Bible, offline</h3><ul><li>King James Version and World English Bible, no internet needed</li><li>Search any word, or jump straight to a reference like John 3:16</li><li>Listen: the Bible read aloud, verse by verse, even with the screen locked</li><li>Highlight, take notes, favorite and share any verse as an image or video</li></ul></div>
+<div class="card"><h3>Reading plans</h3><ul><li>The Bible in a Year, the New Testament, John in 21 Days, Psalms for Hard Days, Proverbs in 31 Days and more</li><li>Seasonal plans for Advent and Lent</li><li>One reading a day with a progress ring; a missed day never resets you</li></ul></div>
+<div class="card"><h3>Prayer, rest and memory</h3><ul><li>A private prayer list you pray through one request at a time, and answered prayers to look back on</li><li>Sleep with Scripture: a psalm read softly over rain, ocean or fireplace sounds</li><li>One minute of guided breathing with a calming verse for anxious moments</li><li>Memory verses that fade word by word and come back just before you&#x27;d forget</li></ul></div>
+<div class="card"><h3>Ask: answers grounded in scripture</h3><ul><li>Ask about anxiety, grief, forgiveness, prayer or any passage</li><li>Every answer quotes real verses, checked word for word against the Bible text</li><li>5 free questions a month; unlimited with Premium</li></ul></div>
+  </div>
+</section>
+<section class="plain">
+  <h2>Price</h2>
+  <p>Lamp Bible is free to download, with the daily verse, widgets, the full Bible, audio and the prayer list free. Lamp Premium adds unlimited Ask, Sleep with Scripture, a reflection with every verse, every reading plan and all themes: $39.99 a year with a 7-day free trial, or $4.99 a week (US prices).</p>
+  <h2>Privacy</h2>
+  <p>No account, no ads and no tracking. Your prayers, notes, highlights and plans stay on your iPhone. Ask sends only the question you type, and only after you agree to it. <a href="privacy/">Privacy Policy</a></p>
+</section>
+<section>
+  <h2>Questions</h2>
+<details><summary>Is there an app that puts a Bible verse on my iPhone Lock Screen?</summary><p>Yes. Lamp Bible has Lock Screen and Home Screen widgets that show a new Bible verse every day. Add the widget once and the verse changes on its own each morning, with no internet needed.</p></details>
+<details><summary>Does Lamp Bible have the King James Version?</summary><p>Yes. Lamp Bible includes the King James Version (KJV) and the World English Bible, both stored on your phone so they work offline. The Spanish edition uses the Reina-Valera 1909.</p></details>
+<details><summary>Is Lamp Bible free?</summary><p>Yes. The daily verse, widgets, the full Bible, audio and the prayer list are free. Lamp Premium ($39.99 a year with a 7-day free trial, or $4.99 a week in the US) adds unlimited Ask, Sleep with Scripture, every reading plan and all themes.</p></details>
+<details><summary>Can an AI Bible app give wrong verses?</summary><p>In Lamp Bible&#x27;s Ask, every verse an answer cites is checked against the Bible text and replaced with the exact words before you see it, so the scripture you read is always the real text.</p></details>
+<details><summary>Does Lamp Bible work without internet?</summary><p>Yes. The Bible, the daily verse, the widgets, plans and the prayer list all work offline. Only Ask needs a connection.</p></details>
+<details><summary>Is there a Bible in a Year plan?</summary><p>Yes. Lamp Bible has The Bible in a Year (365 days), the New Testament, and shorter plans such as John in 21 Days and Proverbs in 31 Days.</p></details>
+</section>
+<section>
+  <h2>More apps</h2>
+  <div class="others">
+<a href="../lamplock/"><img src="../lamplock/img/icon.png" alt="" width="36" height="36"><span>Lamp Lock</span></a>
+<a href="../holovault/"><img src="../holovault/img/icon.png" alt="" width="36" height="36"><span>HoloVault</span></a>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="links"><a href="https://apps.apple.com/us/app/lamp-bible-daily-verse/id6818715500">Lamp Bible on the App Store</a><a href="support/">Support</a><a href="privacy/">Privacy Policy</a><a href="terms/">Terms of Use</a><a href="../">All apps</a></div>
+  
+</footer>
+</div>
+</body>
 </html>

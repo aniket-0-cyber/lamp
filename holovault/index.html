@@ -1,6 +1,127 @@
-<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:16px/1.6 -apple-system,sans-serif;max-width:680px;margin:40px auto;padding:0 20px;color:#14141a}h1{font-size:28px}h2{font-size:19px;margin-top:28px}</style><title>HoloVault Support</title><h1>HoloVault Support</h1>
-<p>Email <a href="mailto:aniket84792@gmail.com">aniket84792@gmail.com</a> and we'll reply as soon as we can.</p>
-<h2>A scan picked the wrong card</h2><p>Tap "Not this card?" to choose from other printings, or find the card by name in Sets. Good light and the whole card in the frame help.</p>
-<h2>Restoring Pro</h2><p>Open Settings in the app and tap Restore Purchases.</p>
-<h2>Cancelling</h2><p>Subscriptions are managed in your Apple Account settings.</p>
-<h2>Rights holders</h2><p>To report content, email the address above with the details and we will respond promptly.</p>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HoloVault: TCG card scanner and collection value tracker for iPhone</title>
+<meta name="description" content="iPhone TCG card scanner for Pokémon, One Piece, Disney Lorcana and Yu-Gi-Oh! cards: scan one card, a stack or 200 photos, see today&#x27;s market price and a year of price history, track collection value like a portfolio, open packs with Pack Rip, set checklists, wishlist price alerts and a Christmas list to share. No account, no ads.">
+<link rel="canonical" href="https://aniket-0-cyber.github.io/lamp/holovault/">
+<link rel="alternate" type="text/plain" href="https://aniket-0-cyber.github.io/lamp/llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HoloVault: TCG card scanner and collection value tracker for iPhone">
+<meta property="og:description" content="iPhone TCG card scanner for Pokémon, One Piece, Disney Lorcana and Yu-Gi-Oh! cards: scan one card, a stack or 200 photos, see today&#x27;s market price and a year of price history, track collection value like a portfolio, open packs with Pack Rip, set checklists, wishlist price alerts and a Christmas list to share. No account, no ads.">
+<meta property="og:url" content="https://aniket-0-cyber.github.io/lamp/holovault/">
+<meta property="og:image" content="https://aniket-0-cyber.github.io/lamp/holovault/img/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="https://aniket-0-cyber.github.io/lamp/holovault/img/icon-512.png">
+<style>
+:root { --bg:#08080F; --text:#F4F4F8; --muted:#A3A3B5; --accent:#A395FF; --card:#13121F; --foil:linear-gradient(90deg, #A395FF, #6FB1FF); }
+@media (prefers-color-scheme: dark) { :root { --bg:#08080F; --text:#F4F4F8; --muted:#A3A3B5; --accent:#A395FF; --card:#13121F; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:17px/1.6 -apple-system, system-ui, "Segoe UI", sans-serif; }
+a { color:var(--accent); }
+.wrap { max-width:1040px; margin:0 auto; padding:0 20px; }
+header.top { display:flex; align-items:center; gap:12px; padding:18px 0; }
+header.top img { width:40px; height:40px; border-radius:10px; }
+header.top .brand { font-weight:700; font-size:18px; text-decoration:none; color:var(--text); }
+header.top nav { margin-left:auto; display:flex; gap:16px; font-size:15px; }
+header.top nav a { color:var(--muted); text-decoration:none; }
+.hero { display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; padding:36px 0 24px; }
+.hero h1 { font-family:-apple-system, "SF Pro Display", system-ui, sans-serif; font-size:clamp(32px, 5vw, 52px); line-height:1.1; margin:0 0 16px; letter-spacing:-0.01em; }
+.hero p.lead { font-size:19px; color:var(--muted); margin:0 0 24px; }
+.hero .phone img { width:100%; max-width:340px; display:block; margin:0 auto; border-radius:28px; box-shadow:0 30px 60px rgba(0,0,0,0.25); }
+.badge img { height:54px; }
+.meta { font-size:14px; color:var(--muted); margin-top:10px; }
+.shots { display:flex; gap:16px; overflow-x:auto; padding:20px 0 28px; scroll-snap-type:x mandatory; }
+.shots figure { margin:0; flex:0 0 220px; scroll-snap-align:start; }
+.shots img { width:220px; border-radius:20px; display:block; }
+.shots figcaption { font-size:13px; color:var(--muted); margin-top:8px; }
+section { padding:24px 0; }
+h2 { font-family:-apple-system, "SF Pro Display", system-ui, sans-serif; font-size:28px; margin:0 0 18px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; }
+.card { background:var(--card); border-radius:20px; padding:20px 22px; border:1px solid rgba(127,127,127,0.18); }
+.card h3 { margin:0 0 8px; font-size:18px; }
+.card ul { margin:0; padding-left:20px; }
+.card li { margin:6px 0; color:var(--muted); }
+.plain p { color:var(--muted); max-width:760px; }
+details { background:var(--card); border-radius:16px; padding:14px 18px; margin:10px 0; border:1px solid rgba(127,127,127,0.18); }
+summary { font-weight:600; cursor:pointer; }
+details p { color:var(--muted); margin:10px 0 2px; }
+.others { display:flex; gap:14px; flex-wrap:wrap; }
+.others a { display:flex; align-items:center; gap:10px; background:var(--card); border-radius:16px; padding:10px 14px; text-decoration:none; color:var(--text); border:1px solid rgba(127,127,127,0.18); }
+.others img { width:36px; height:36px; border-radius:9px; }
+footer { padding:28px 0 48px; font-size:14px; color:var(--muted); }
+footer .links { display:flex; gap:18px; flex-wrap:wrap; margin-bottom:10px; }
+.accentbar { height:4px; width:56px; border-radius:2px; background:var(--foil); margin-bottom:18px; }
+@media (max-width: 760px) {
+  .hero { grid-template-columns:1fr; gap:24px; padding-top:16px; }
+  .hero .phone img { max-width:220px; }
+  header.top nav { gap:12px; font-size:14px; }
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "TCG Card Scanner: HoloVault", "alternateName": "HoloVault", "description": "iPhone TCG card scanner for Pokémon, One Piece, Disney Lorcana and Yu-Gi-Oh! cards: scan one card, a stack or 200 photos, see today's market price and a year of price history, track collection value like a portfolio, open packs with Pack Rip, set checklists, wishlist price alerts and a Christmas list to share. No account, no ads.", "url": "https://aniket-0-cyber.github.io/lamp/holovault/", "operatingSystem": "iOS 18.0 or later", "applicationCategory": "ReferenceApplication", "installUrl": "https://apps.apple.com/us/app/tcg-card-scanner-holovault/id6819069009", "downloadUrl": "https://apps.apple.com/us/app/tcg-card-scanner-holovault/id6819069009", "image": "https://aniket-0-cyber.github.io/lamp/holovault/img/icon-512.png", "screenshot": ["https://aniket-0-cyber.github.io/lamp/holovault/img/1.jpg", "https://aniket-0-cyber.github.io/lamp/holovault/img/2.jpg", "https://aniket-0-cyber.github.io/lamp/holovault/img/3.jpg", "https://aniket-0-cyber.github.io/lamp/holovault/img/4.jpg", "https://aniket-0-cyber.github.io/lamp/holovault/img/5.jpg"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free to download, with optional in-app subscriptions."}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What app can scan Pokémon cards and tell me what they're worth?", "acceptedAnswer": {"@type": "Answer", "text": "HoloVault scans Pokémon cards (and One Piece, Disney Lorcana and Yu-Gi-Oh! cards) with your iPhone camera, finds the exact card, set and number, and shows today's market price with a year of price history."}}, {"@type": "Question", "name": "Is there a Lorcana or One Piece card scanner for iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. HoloVault scans Disney Lorcana and One Piece Card Game cards as well as Pokémon and Yu-Gi-Oh!, and tracks the value of your whole collection across all four games."}}, {"@type": "Question", "name": "How do I track my card collection's value?", "acceptedAnswer": {"@type": "Answer", "text": "Scan or search each card in HoloVault and add it to your collection. HoloVault shows the total value, how it moved since the last prices, a value chart, and what you paid against what it's worth."}}, {"@type": "Question", "name": "Can I scan a whole pack while opening it?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Pack Rip mode scans every card as you open a pack, keeps a running total, and shows what you pulled against what the pack cost, ready to share."}}, {"@type": "Question", "name": "Is HoloVault free?", "acceptedAnswer": {"@type": "Answer", "text": "HoloVault is free to try with 25 scans and 25 cards. HoloVault Pro ($39.99 a year for every game with a 7-day free trial, $19.99 a year for one game, or $5.99 a week in the US) removes the limits."}}, {"@type": "Question", "name": "Where do HoloVault's prices come from?", "acceptedAnswer": {"@type": "Answer", "text": "From licensed market price data, updated daily, shown with its source and date. AI only reads the name and number printed on the card; it never sets a price."}}]}</script>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <img src="img/icon.png" alt="HoloVault icon" width="40" height="40">
+  <a class="brand" href="./">HoloVault</a>
+  <nav><a href="support/">Support</a><a href="privacy/">Privacy</a><a href="terms/">Terms</a></nav>
+</header>
+<main>
+<div class="hero">
+  <div>
+    <div class="accentbar"></div>
+    <h1>Scan any trading card and see what it&#x27;s worth in seconds.</h1>
+    <p class="lead">HoloVault is a trading card scanner for iPhone. Point your camera at a card from Pokémon, One Piece, Disney Lorcana or Yu-Gi-Oh! and it finds the exact card, set and number with today&#x27;s market price. Add it with one tap and track your whole collection&#x27;s value like a portfolio.</p>
+    <a class="badge" href="https://apps.apple.com/us/app/tcg-card-scanner-holovault/id6819069009"><img src="../assets/app-store-badge.svg" alt="Download TCG Card Scanner: HoloVault on the App Store" height="54"></a>
+    <p class="meta">Free on iPhone · iOS 18 or later · No account, no ads</p>
+  </div>
+  <div class="phone"><img src="img/1.jpg" alt="A scanned card with its market price" width="340"></div>
+</div>
+<div class="shots" aria-label="Screenshots">
+<figure><img src="img/2.jpg" alt="Pack Rip: what you pulled" width="220" loading="lazy"><figcaption>Pack Rip: what you pulled</figcaption></figure>
+<figure><img src="img/3.jpg" alt="Collection value over time" width="220" loading="lazy"><figcaption>Collection value over time</figcaption></figure>
+<figure><img src="img/4.jpg" alt="A card&#x27;s price trend" width="220" loading="lazy"><figcaption>A card&#x27;s price trend</figcaption></figure>
+<figure><img src="img/5.jpg" alt="Set checklists" width="220" loading="lazy"><figcaption>Set checklists</figcaption></figure>
+</div>
+<section>
+  <h2>What HoloVault does</h2>
+  <div class="grid">
+<div class="card"><h3>Scan</h3><ul><li>One card, a whole stack, or up to 200 photos at once</li><li>Not sure which printing? Pick from side-by-side matches</li><li>Search by name or number when you&#x27;d rather type</li></ul></div>
+<div class="card"><h3>Pack Rip</h3><ul><li>Scan every card as you open a pack and watch the running total climb</li><li>See what you pulled against what the pack cost, and share it</li></ul></div>
+<div class="card"><h3>Your collection, like a portfolio</h3><ul><li>Total value and how it moved since the last prices, with a value chart you can drag across</li><li>Performance: what you paid against what it&#x27;s worth, by game, tier and set</li><li>Rare, Epic and Legendary tiers, with your best cards on their own shelf</li></ul></div>
+<div class="card"><h3>Every card</h3><ul><li>Today&#x27;s market price, a year of price history, and prices for each condition</li><li>Trending today: the cards on the move across four games</li><li>Set checklists, a wishlist with price alerts, and a Christmas list to send to family</li><li>Trade check and a centering check</li></ul></div>
+  </div>
+</section>
+<section class="plain">
+  <h2>Price</h2>
+  <p>HoloVault is free to try with 25 scans and 25 cards. HoloVault Pro gives unlimited scans and cards, Performance, full price history, price alerts and every theme: $39.99 a year for every game with a 7-day free trial, $19.99 a year for one game, or $5.99 a week (US prices).</p>
+  <h2>Privacy</h2>
+  <p>No account, no ads, no tracking. To identify a card, only the cropped photo of that card is sent, read by a third-party AI service and not stored on our server. Prices come from licensed market data, never from AI. <a href="privacy/">Privacy Policy</a></p>
+</section>
+<section>
+  <h2>Questions</h2>
+<details><summary>What app can scan Pokémon cards and tell me what they&#x27;re worth?</summary><p>HoloVault scans Pokémon cards (and One Piece, Disney Lorcana and Yu-Gi-Oh! cards) with your iPhone camera, finds the exact card, set and number, and shows today&#x27;s market price with a year of price history.</p></details>
+<details><summary>Is there a Lorcana or One Piece card scanner for iPhone?</summary><p>Yes. HoloVault scans Disney Lorcana and One Piece Card Game cards as well as Pokémon and Yu-Gi-Oh!, and tracks the value of your whole collection across all four games.</p></details>
+<details><summary>How do I track my card collection&#x27;s value?</summary><p>Scan or search each card in HoloVault and add it to your collection. HoloVault shows the total value, how it moved since the last prices, a value chart, and what you paid against what it&#x27;s worth.</p></details>
+<details><summary>Can I scan a whole pack while opening it?</summary><p>Yes. Pack Rip mode scans every card as you open a pack, keeps a running total, and shows what you pulled against what the pack cost, ready to share.</p></details>
+<details><summary>Is HoloVault free?</summary><p>HoloVault is free to try with 25 scans and 25 cards. HoloVault Pro ($39.99 a year for every game with a 7-day free trial, $19.99 a year for one game, or $5.99 a week in the US) removes the limits.</p></details>
+<details><summary>Where do HoloVault&#x27;s prices come from?</summary><p>From licensed market price data, updated daily, shown with its source and date. AI only reads the name and number printed on the card; it never sets a price.</p></details>
+</section>
+<section>
+  <h2>More apps</h2>
+  <div class="others">
+<a href="../lampbible/"><img src="../lampbible/img/icon.png" alt="" width="36" height="36"><span>Lamp Bible</span></a>
+<a href="../lamplock/"><img src="../lamplock/img/icon.png" alt="" width="36" height="36"><span>Lamp Lock</span></a>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="links"><a href="https://apps.apple.com/us/app/tcg-card-scanner-holovault/id6819069009">HoloVault on the App Store</a><a href="support/">Support</a><a href="privacy/">Privacy Policy</a><a href="terms/">Terms of Use</a><a href="../">All apps</a></div>
+  <p>HoloVault is an independent app, not affiliated with, endorsed, sponsored or approved by any trading card game publisher, grading company or marketplace. Pokémon, One Piece, Disney Lorcana and Yu-Gi-Oh! are trademarks of their respective owners. Prices are estimates based on market data, not appraisals or financial advice.</p>
+</footer>
+</div>
+</body>
+</html>
