@@ -10,6 +10,8 @@ import json
 from datetime import date
 from pathlib import Path
 
+from guides import GUIDES
+
 SITE = "https://wicklightlabs.com"
 STUDIO = "Wicklight Labs"
 ROOT = Path(__file__).resolve().parent.parent
@@ -381,6 +383,96 @@ def head(title, description, url, image, style, extra=""):
 """
 
 
+def blocks_html(blocks):
+    out = []
+    for b in blocks:
+        if isinstance(b, str):
+            out.append(f"<p>{esc(b)}</p>")
+        elif isinstance(b, list):
+            out.append("<ul>" + "".join(f"<li>{esc(i)}</li>" for i in b) + "</ul>")
+        else:
+            _, header, rows = b
+            out.append('<div class="tablewrap"><table><thead><tr>' + "".join(f"<th>{esc(h)}</th>" for h in header)
+                       + "</tr></thead><tbody>" + "".join("<tr>" + "".join(f"<td>{esc(c)}</td>" for c in r) + "</tr>" for r in rows)
+                       + "</tbody></table></div>")
+    return "\n".join(out)
+
+
+GUIDE_CSS = """article { max-width:760px; }
+article h1 { font-size:clamp(30px, 4.5vw, 44px); line-height:1.15; margin:8px 0 14px; }
+article p, article li { color:var(--text); }
+article .lead { font-size:19px; color:var(--muted); }
+article .date { font-size:14px; color:var(--muted); }
+article ul { padding-left:22px; }
+.tablewrap { overflow-x:auto; margin:8px 0 16px; }
+table { border-collapse:collapse; width:100%; font-size:15px; }
+th, td { text-align:left; padding:8px 10px; border-bottom:1px solid rgba(127,127,127,0.25); white-space:nowrap; }
+th { color:var(--muted); font-weight:600; }
+.cta { display:flex; gap:14px; align-items:center; background:var(--card); border-radius:20px; padding:16px 18px; border:1px solid rgba(127,127,127,0.18); margin:24px 0; }
+.cta img.icon { width:56px; height:56px; border-radius:13px; }
+.cta .badge img { height:44px; }
+"""
+
+
+def guide_url(g):
+    return f"{SITE}/{g['app']}/guides/{g['slug']}/"
+
+
+def guide_page(g):
+    app = next(a for a in APPS if a["slug"] == g["app"])
+    url = guide_url(g)
+    heading = '"New York", "Iowan Old Style", Georgia, serif' if app["serif"] else '-apple-system, system-ui, sans-serif'
+    style = css(app["colors"], app["serif"], app.get("accent2")) + GUIDE_CSS + f"article h1 {{ font-family:{heading}; }}\n"
+    sections = "\n".join(f"<h2>{esc(h)}</h2>\n{blocks_html(b)}" for h, b in g["sections"])
+    article = {"@context": "https://schema.org", "@type": "Article", "headline": g["title"], "description": g["description"],
+               "datePublished": g["date"], "dateModified": g["date"], "url": url, "image": f"{SITE}/{app['slug']}/img/icon-512.png",
+               "author": {"@type": "Organization", "name": STUDIO, "url": f"{SITE}/"},
+               "publisher": {"@type": "Organization", "name": STUDIO, "url": f"{SITE}/"},
+               "about": {"@type": "MobileApplication", "name": app["store_name"], "url": f"{SITE}/{app['slug']}/"}}
+    extra = f'<script type="application/ld+json">{json.dumps(article, ensure_ascii=False)}</script>'
+    more = [o for o in GUIDES if o is not g]
+    more_html = "".join(f'<li><a href="../../../{o["app"]}/guides/{o["slug"]}/">{esc(o["title"])}</a></li>' for o in more)
+    return head(g["title"], g["description"], url, f"{SITE}/{app['slug']}/img/icon-512.png", style, extra) + f"""<body>
+<div class="wrap">
+<header class="top">
+  <img src="../../img/icon.png" alt="{esc(app['name'])} icon" width="40" height="40">
+  <a class="brand" href="../../">{esc(app['name'])}</a>
+  <nav><a href="../../">The app</a><a href="../../support/">Support</a></nav>
+</header>
+<main>
+<article>
+  <div class="accentbar"></div>
+  <h1>{esc(g['title'])}</h1>
+  <p class="date">{STUDIO} · {date.fromisoformat(g['date']).strftime('%-d %B %Y')}</p>
+  <p class="lead">{esc(g['lead'])}</p>
+{sections}
+  <div class="cta">
+    <img class="icon" src="../../img/icon.png" alt="">
+    <div><strong>{esc(app['store_name'])}</strong><br><a class="badge" href="{app['store']}"><img src="../../{BADGE}" alt="Download {esc(app['store_name'])} on the App Store" height="44"></a></div>
+  </div>
+  <h2>More guides</h2>
+  <ul>{more_html}</ul>
+</article>
+</main>
+<footer>
+  <div class="links"><a href="../../">{esc(app['name'])}</a><a href="../../privacy/">Privacy Policy</a><a href="../../../">All apps</a></div>
+  <p>Made by <a href="../../../">Wicklight Labs</a>.</p>
+  {f'<p>{esc(app["notice"])}</p>' if app.get("notice") else ""}
+</footer>
+</div>
+</body>
+</html>
+"""
+
+
+def guides_section(app):
+    mine = [g for g in GUIDES if g["app"] == app["slug"]]
+    if not mine:
+        return ""
+    items = "".join(f'<li><a href="guides/{g["slug"]}/">{esc(g["title"])}</a></li>' for g in mine)
+    return f'<section class="plain">\n  <h2>Guides</h2>\n  <ul>{items}</ul>\n</section>\n'
+
+
 def app_page(app):
     base = f"{SITE}/{app['slug']}/"
     others = [a for a in APPS if a["slug"] != app["slug"]]
@@ -433,7 +525,7 @@ def app_page(app):
   <h2>Questions</h2>
 {faq}
 </section>
-<section>
+{guides_section(app)}<section>
   <h2>More apps</h2>
   <div class="others">
 {other_links}
@@ -506,6 +598,7 @@ def sitemap():
         for sub in ("support", "privacy", "terms", "sources"):
             if (ROOT / a["slug"] / sub / "index.html").exists():
                 urls.append(f"{SITE}/{a['slug']}/{sub}/")
+    urls += [guide_url(g) for g in GUIDES]
     body = "\n".join(f"  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>" for u in urls)
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{body}\n</urlset>\n'
 
@@ -522,6 +615,9 @@ def llms():
                   f"- Price: {a['price']}",
                   f"- Privacy: {a['privacy']}", ""]
         parts += ["Common questions:", ""] + [f"- {q} {ans}" for q, ans in a["faq"]] + [""]
+        mine = [g for g in GUIDES if g["app"] == a["slug"]]
+        if mine:
+            parts += ["Guides:", ""] + [f"- [{g['title']}]({guide_url(g)}): {g['description']}" for g in mine] + [""]
     if COMING:
         parts += ["## Coming soon", ""] + [f"- {c['name']}: {c['line']}" for c in COMING] + [""]
     return "\n".join(parts)
@@ -530,6 +626,10 @@ def llms():
 if __name__ == "__main__":
     for app in APPS:
         (ROOT / app["slug"] / "index.html").write_text(app_page(app))
+    for g in GUIDES:
+        folder = ROOT / g["app"] / "guides" / g["slug"]
+        folder.mkdir(parents=True, exist_ok=True)
+        (folder / "index.html").write_text(guide_page(g))
     (ROOT / "index.html").write_text(home_page())
     (ROOT / "sitemap.xml").write_text(sitemap())
     (ROOT / "llms.txt").write_text(llms())

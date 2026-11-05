@@ -20,6 +20,10 @@ Common questions:
 - Does Lamp Bible work without internet? Yes. The Bible, the daily verse, the widgets, plans and the prayer list all work offline. Only Ask needs a connection.
 - Is there a Bible in a Year plan? Yes. Lamp Bible has The Bible in a Year (365 days), the New Testament, and shorter plans such as John in 21 Days and Proverbs in 31 Days.
 
+Guides:
+
+- [Advent reading plan 2026: 25 chapters from Genesis to the manger](https://wicklightlabs.com/lampbible/guides/advent-reading-plan-2026/): A free 25-day Advent Bible reading plan for 1 to 25 December 2026, one chapter a day from the first promise in Genesis to the birth of Jesus, with the Advent wreath candles for each Sunday.
+
 ## Lamp Lock: Bible App Blocker
 
 Christian app blocker for iPhone built on Apple's Screen Time: chosen apps stay locked until you read a Bible verse, pray or read a chapter, then open for a set time. Strict mode, focus sessions, daily limits, schedules, reading plans, guided prayers, streaks and Circles with friends. No account, no ads.
@@ -37,6 +41,10 @@ Common questions:
 - Does Lamp Lock see what I do on my phone? No. Lamp Lock works through Apple's Screen Time, which keeps app names and usage on the device. Lamp Lock never sees which apps you use and has no analytics.
 - Is Lamp Lock free? Lamp Lock is free to start and locks one app with today's verse. Premium ($39.99 a year with a 7-day free trial, $5.99 a week, or $79.99 once, US prices) locks any number of apps and adds strict mode, limits and schedules.
 - Can I do it with friends or my small group? Yes. Circles lets you share your streak with friends, family or a small group using a code. Only a nickname and your streak are shared, and only if you join.
+
+Guides:
+
+- [How to scroll less this Advent: a simple phone plan for Christians](https://wicklightlabs.com/lamplock/guides/scroll-less-this-advent/): Practical ways to spend less time on your phone from Thanksgiving to Christmas 2026: put scripture before social apps, set a bedtime schedule, and read one chapter a day of Advent.
 
 ## TCG Card Scanner: HoloVault
 
@@ -56,6 +64,10 @@ Common questions:
 - Is HoloVault free? HoloVault is free to try with 25 scans and 25 cards. HoloVault Pro ($39.99 a year for every game with a 7-day free trial, $19.99 a year for one game, or $5.99 a week in the US) removes the limits.
 - Where do HoloVault's prices come from? From licensed market price data, updated daily, shown with its source and date. AI only reads the name and number printed on the card; it never sets a price.
 
+Guides:
+
+- [How to find out what your Pokémon cards are worth (before Christmas trading)](https://wicklightlabs.com/holovault/guides/what-are-my-cards-worth/): A step-by-step guide to pricing Pokémon, One Piece, Lorcana and Yu-Gi-Oh! cards: find the exact card, check condition and variant, and use recent market prices, not asking prices.
+
 ## Glipsy: GLP-1 Shot Tracker
 
 Free iPhone GLP-1 tracker: log weekly shots or daily pills with reminders, injection site rotation on a body map, protein, fiber and water goals with food search and barcode scan, symptoms and food noise check-ins, weight, a doctor report, widgets and Siri. A personal log, not medical advice. No account, no ads.
@@ -73,3 +85,7 @@ Common questions:
 - How much protein should I eat on a GLP-1? Glipsy gives a starting daily protein, fiber and water goal from a few questions, based on published guidance, and you can change it any time. Ask your doctor or dietitian what is right for you.
 - Is Glipsy free? Yes. Doses, reminders, injection sites, food search, water, symptoms and weight are free for good. Glipsy Pro ($29.99 a year with a 7-day free trial, or $9.99 a month in the US) adds deeper insights, the doctor report, progress photos and themes.
 - Is Glipsy medical advice? No. Glipsy is a personal log. It never suggests a dose. Always follow your prescriber's instructions. Its sources are listed at wicklightlabs.com/glipsy/sources/.
+
+Guides:
+
+- [Thanksgiving on a GLP-1: a protein-first plate and a calm day](https://wicklightlabs.com/glipsy/guides/thanksgiving-on-a-glp-1/): Practical, gentle tips for Thanksgiving and holiday meals while taking a GLP-1 medicine: protein first, fiber and water through the day, smaller portions, and no guilt.
