@@ -1,4 +1,4 @@
-# Wicklight Labs: Lamp Bible, Lamp Lock and HoloVault
+# Wicklight Labs: Lamp Bible, Lamp Lock, HoloVault and Glipsy
 
 > Wicklight Labs makes small, private iPhone apps. No accounts, no ads, no tracking. All are free to download with optional subscriptions.
 
@@ -56,6 +56,20 @@ Common questions:
 - Is HoloVault free? HoloVault is free to try with 25 scans and 25 cards. HoloVault Pro ($39.99 a year for every game with a 7-day free trial, $19.99 a year for one game, or $5.99 a week in the US) removes the limits.
 - Where do HoloVault's prices come from? From licensed market price data, updated daily, shown with its source and date. AI only reads the name and number printed on the card; it never sets a price.
 
-## Coming soon
+## Glipsy: GLP-1 Shot Tracker
 
-- Glipsy: A GLP-1 shot tracker with protein and water goals. Coming soon to the App Store.
+Free iPhone GLP-1 tracker: log weekly shots or daily pills with reminders, injection site rotation on a body map, protein, fiber and water goals with food search and barcode scan, symptoms and food noise check-ins, weight, a doctor report, widgets and Siri. A personal log, not medical advice. No account, no ads.
+
+- [Website](https://wicklightlabs.com/glipsy/): features, price, privacy and FAQ
+- [App Store](https://apps.apple.com/us/app/glipsy-glp-1-shot-tracker/id6823594933)
+- Price: Doses, reminders, injection sites, food search with 3 scans a day, water, symptoms, weight and the weekly recap are free, for good. Glipsy Pro adds unlimited scans, deeper insights, the doctor report, progress photos and themes: $29.99 a year with a 7-day free trial, or $9.99 a month (US prices).
+- Privacy: No account, no ads, no tracking. Your log stays on your iPhone. Only a barcode number or a typed food name is sent, to Open Food Facts, to look up a packaged food.
+
+Common questions:
+
+- What is a good app to track GLP-1 shots on iPhone? Glipsy logs weekly GLP-1 shots and daily pills in two taps, reminds you on dose day, rotates injection sites on a body map, and keeps protein, fiber and water goals in the same place. The core tracker is free, with no account.
+- Does Glipsy work with semaglutide and tirzepatide? Yes. Glipsy works with weekly semaglutide and tirzepatide shots, daily GLP-1 pills, and more than one medicine at a time. You log the dose exactly as prescribed; Glipsy never suggests a dose.
+- How do I keep track of injection sites? Each time you log a shot, Glipsy shows a body map and suggests the site you used longest ago, so you rotate without having to remember.
+- How much protein should I eat on a GLP-1? Glipsy gives a starting daily protein, fiber and water goal from a few questions, based on published guidance, and you can change it any time. Ask your doctor or dietitian what is right for you.
+- Is Glipsy free? Yes. Doses, reminders, injection sites, food search, water, symptoms and weight are free for good. Glipsy Pro ($29.99 a year with a 7-day free trial, or $9.99 a month in the US) adds deeper insights, the doctor report, progress photos and themes.
+- Is Glipsy medical advice? No. Glipsy is a personal log. It never suggests a dose. Always follow your prescriber's instructions. Its sources are listed at wicklightlabs.com/glipsy/sources/.

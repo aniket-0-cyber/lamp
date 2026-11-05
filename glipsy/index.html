@@ -1,9 +1,129 @@
-<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font:16px/1.6 -apple-system,sans-serif;max-width:680px;margin:40px auto;padding:0 20px;color:#1E2B22;background:#F6F1E4}h1{font-size:28px}h2{font-size:19px;margin-top:28px}a{color:#3E7650}</style><title>Glipsy Support</title><h1>Glipsy Support</h1>
-<p>Email <a href="mailto:help@wicklightlabs.com">help@wicklightlabs.com</a> and we'll reply as soon as we can.</p>
-<h2>How is the medicine level worked out?</h2><p>From the doses you log and each medicine's half-life and time to peak on its prescribing information. It's an estimate, not a blood test. In the app, tap the ⓘ next to the level for the details and sources.</p>
-<h2>I'm not getting reminders</h2><p>Check that notifications for Glipsy are on in the iPhone's Settings → Notifications → Glipsy, and that "Remind me" is on for the medicine in Glipsy's Settings.</p>
-<h2>Moving to a new phone</h2><p>Your log stays on your phone and isn't in iCloud. In Glipsy, open Settings → Save a backup, keep the file in Files, then on the new phone open Settings → Restore from a backup. Progress photos aren't in backups.</p>
-<h2>Apple Health</h2><p>To change what Glipsy can read or save, open the Health app, tap your profile, then Apps → Glipsy.</p>
-<h2>Restoring Pro</h2><p>Open Settings in the app and tap Restore Purchases.</p>
-<h2>Cancelling</h2><p>Subscriptions are managed in your Apple Account settings. The free features keep working after you cancel.</p>
-<p><a href="privacy/">Privacy Policy</a> · <a href="terms/">Terms of Use</a></p>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glipsy: GLP-1 shot tracker with protein, fiber and water goals for iPhone</title>
+<meta name="description" content="Free iPhone GLP-1 tracker: log weekly shots or daily pills with reminders, injection site rotation on a body map, protein, fiber and water goals with food search and barcode scan, symptoms and food noise check-ins, weight, a doctor report, widgets and Siri. A personal log, not medical advice. No account, no ads.">
+<link rel="canonical" href="https://wicklightlabs.com/glipsy/">
+<link rel="alternate" type="text/plain" href="https://wicklightlabs.com/llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Glipsy: GLP-1 shot tracker with protein, fiber and water goals for iPhone">
+<meta property="og:description" content="Free iPhone GLP-1 tracker: log weekly shots or daily pills with reminders, injection site rotation on a body map, protein, fiber and water goals with food search and barcode scan, symptoms and food noise check-ins, weight, a doctor report, widgets and Siri. A personal log, not medical advice. No account, no ads.">
+<meta property="og:url" content="https://wicklightlabs.com/glipsy/">
+<meta property="og:image" content="https://wicklightlabs.com/glipsy/img/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="https://wicklightlabs.com/glipsy/img/icon-512.png">
+<style>
+:root { --bg:#F6F1E4; --text:#1E2B22; --muted:#5E6B60; --accent:#3E7650; --card:#FFFFFF; --foil:linear-gradient(90deg, #3E7650, #E0702E); }
+@media (prefers-color-scheme: dark) { :root { --bg:#0F1712; --text:#EEF3EC; --muted:#AEBBAF; --accent:#86C99E; --card:#18221B; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:17px/1.6 -apple-system, system-ui, "Segoe UI", sans-serif; }
+a { color:var(--accent); }
+.wrap { max-width:1040px; margin:0 auto; padding:0 20px; }
+header.top { display:flex; align-items:center; gap:12px; padding:18px 0; }
+header.top img { width:40px; height:40px; border-radius:10px; }
+header.top .brand { font-weight:700; font-size:18px; text-decoration:none; color:var(--text); }
+header.top nav { margin-left:auto; display:flex; gap:16px; font-size:15px; }
+header.top nav a { color:var(--muted); text-decoration:none; }
+.hero { display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; padding:36px 0 24px; }
+.hero h1 { font-family:-apple-system, "SF Pro Display", system-ui, sans-serif; font-size:clamp(32px, 5vw, 52px); line-height:1.1; margin:0 0 16px; letter-spacing:-0.01em; }
+.hero p.lead { font-size:19px; color:var(--muted); margin:0 0 24px; }
+.hero .phone img { width:100%; max-width:340px; display:block; margin:0 auto; border-radius:28px; box-shadow:0 30px 60px rgba(0,0,0,0.25); }
+.badge img { height:54px; }
+.meta { font-size:14px; color:var(--muted); margin-top:10px; }
+.shots { display:flex; gap:16px; overflow-x:auto; padding:20px 0 28px; scroll-snap-type:x mandatory; }
+.shots figure { margin:0; flex:0 0 220px; scroll-snap-align:start; }
+.shots img { width:220px; border-radius:20px; display:block; }
+.shots figcaption { font-size:13px; color:var(--muted); margin-top:8px; }
+section { padding:24px 0; }
+h2 { font-family:-apple-system, "SF Pro Display", system-ui, sans-serif; font-size:28px; margin:0 0 18px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; }
+.card { background:var(--card); border-radius:20px; padding:20px 22px; border:1px solid rgba(127,127,127,0.18); }
+.card h3 { margin:0 0 8px; font-size:18px; }
+.card ul { margin:0; padding-left:20px; }
+.card li { margin:6px 0; color:var(--muted); }
+.plain p { color:var(--muted); max-width:760px; }
+details { background:var(--card); border-radius:16px; padding:14px 18px; margin:10px 0; border:1px solid rgba(127,127,127,0.18); }
+summary { font-weight:600; cursor:pointer; }
+details p { color:var(--muted); margin:10px 0 2px; }
+.others { display:flex; gap:14px; flex-wrap:wrap; }
+.others a { display:flex; align-items:center; gap:10px; background:var(--card); border-radius:16px; padding:10px 14px; text-decoration:none; color:var(--text); border:1px solid rgba(127,127,127,0.18); }
+.others img { width:36px; height:36px; border-radius:9px; }
+footer { padding:28px 0 48px; font-size:14px; color:var(--muted); }
+footer .links { display:flex; gap:18px; flex-wrap:wrap; margin-bottom:10px; }
+.accentbar { height:4px; width:56px; border-radius:2px; background:var(--foil); margin-bottom:18px; }
+@media (max-width: 760px) {
+  .hero { grid-template-columns:1fr; gap:24px; padding-top:16px; }
+  .hero .phone img { max-width:220px; }
+  header.top nav { gap:12px; font-size:14px; }
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Glipsy: GLP-1 Shot Tracker", "alternateName": "Glipsy", "description": "Free iPhone GLP-1 tracker: log weekly shots or daily pills with reminders, injection site rotation on a body map, protein, fiber and water goals with food search and barcode scan, symptoms and food noise check-ins, weight, a doctor report, widgets and Siri. A personal log, not medical advice. No account, no ads.", "url": "https://wicklightlabs.com/glipsy/", "operatingSystem": "iOS 18.0 or later", "applicationCategory": "HealthApplication", "installUrl": "https://apps.apple.com/us/app/glipsy-glp-1-shot-tracker/id6823594933", "downloadUrl": "https://apps.apple.com/us/app/glipsy-glp-1-shot-tracker/id6823594933", "image": "https://wicklightlabs.com/glipsy/img/icon-512.png", "screenshot": ["https://wicklightlabs.com/glipsy/img/1.jpg", "https://wicklightlabs.com/glipsy/img/2.jpg", "https://wicklightlabs.com/glipsy/img/3.jpg", "https://wicklightlabs.com/glipsy/img/4.jpg", "https://wicklightlabs.com/glipsy/img/5.jpg"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free to download, with optional in-app subscriptions."}, "publisher": {"@type": "Organization", "name": "Wicklight Labs", "url": "https://wicklightlabs.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a good app to track GLP-1 shots on iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Glipsy logs weekly GLP-1 shots and daily pills in two taps, reminds you on dose day, rotates injection sites on a body map, and keeps protein, fiber and water goals in the same place. The core tracker is free, with no account."}}, {"@type": "Question", "name": "Does Glipsy work with semaglutide and tirzepatide?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Glipsy works with weekly semaglutide and tirzepatide shots, daily GLP-1 pills, and more than one medicine at a time. You log the dose exactly as prescribed; Glipsy never suggests a dose."}}, {"@type": "Question", "name": "How do I keep track of injection sites?", "acceptedAnswer": {"@type": "Answer", "text": "Each time you log a shot, Glipsy shows a body map and suggests the site you used longest ago, so you rotate without having to remember."}}, {"@type": "Question", "name": "How much protein should I eat on a GLP-1?", "acceptedAnswer": {"@type": "Answer", "text": "Glipsy gives a starting daily protein, fiber and water goal from a few questions, based on published guidance, and you can change it any time. Ask your doctor or dietitian what is right for you."}}, {"@type": "Question", "name": "Is Glipsy free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Doses, reminders, injection sites, food search, water, symptoms and weight are free for good. Glipsy Pro ($29.99 a year with a 7-day free trial, or $9.99 a month in the US) adds deeper insights, the doctor report, progress photos and themes."}}, {"@type": "Question", "name": "Is Glipsy medical advice?", "acceptedAnswer": {"@type": "Answer", "text": "No. Glipsy is a personal log. It never suggests a dose. Always follow your prescriber's instructions. Its sources are listed at wicklightlabs.com/glipsy/sources/."}}]}</script>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <img src="img/icon.png" alt="Glipsy icon" width="40" height="40">
+  <a class="brand" href="./">Glipsy</a>
+  <nav><a href="support/">Support</a><a href="privacy/">Privacy</a><a href="terms/">Terms</a></nav>
+</header>
+<main>
+<div class="hero">
+  <div>
+    <div class="accentbar"></div>
+    <h1>Your GLP-1 week, made gentle: every shot, protein and water in one place.</h1>
+    <p class="lead">Glipsy is a free iPhone tracker for people taking a weekly GLP-1 shot or a daily pill, such as semaglutide or tirzepatide. Log a dose in two taps, rotate injection sites, hit simple protein, fiber and water goals, and watch Glip&#x27;s garden grow with every day you log.</p>
+    <a class="badge" href="https://apps.apple.com/us/app/glipsy-glp-1-shot-tracker/id6823594933"><img src="../assets/app-store-badge.svg" alt="Download Glipsy: GLP-1 Shot Tracker on the App Store" height="54"></a>
+    <p class="meta">Free on iPhone · iOS 18 or later · No account, no ads</p>
+  </div>
+  <div class="phone"><img src="img/1.jpg" alt="Your daily plan for protein, fiber and water" width="340"></div>
+</div>
+<div class="shots" aria-label="Screenshots">
+<figure><img src="img/2.jpg" alt="Protein and fiber in seconds" width="220" loading="lazy"><figcaption>Protein and fiber in seconds</figcaption></figure>
+<figure><img src="img/3.jpg" alt="How you feel, in two taps" width="220" loading="lazy"><figcaption>How you feel, in two taps</figcaption></figure>
+<figure><img src="img/4.jpg" alt="Patterns across your dose week" width="220" loading="lazy"><figcaption>Patterns across your dose week</figcaption></figure>
+<figure><img src="img/5.jpg" alt="A private journal, no account" width="220" loading="lazy"><figcaption>A private journal, no account</figcaption></figure>
+</div>
+<section>
+  <h2>What Glipsy does</h2>
+  <div class="grid">
+<div class="card"><h3>Every dose, remembered</h3><ul><li>Log a shot or pill in two taps, with a reminder on dose day</li><li>Injection site rotation on a body map: Glipsy suggests the spot you used longest ago</li><li>Weekly shots, daily pills and more than one medicine</li><li>Count your pens or pills and get a reminder when about a week is left</li></ul></div>
+<div class="card"><h3>Protein, fiber and water</h3><ul><li>A daily plan to start from, with tips for nausea, constipation, food noise and keeping muscle</li><li>Search everyday foods, or scan a barcode or nutrition label</li><li>Glipsy counts protein and fiber, not calories</li><li>Water by the glass, from the app or a widget</li></ul></div>
+<div class="card"><h3>How you feel</h3><ul><li>Nausea, constipation, tiredness, food noise and more, with how bad</li><li>Patterns across your dose week, and weight from Apple Health or logged in Glipsy</li><li>A doctor report to share or print before your appointment</li></ul></div>
+<div class="card"><h3>Glip&#x27;s garden</h3><ul><li>Every dose you log and every goal day grows a garden, from a seed to a meadow</li><li>Milestones bring new friends: a ladybug, a bird, a rainbow, fireflies</li><li>On your Home Screen and Lock Screen, with Siri and Control Center shortcuts</li></ul></div>
+  </div>
+</section>
+<section class="plain">
+  <h2>Price</h2>
+  <p>Doses, reminders, injection sites, food search with 3 scans a day, water, symptoms, weight and the weekly recap are free, for good. Glipsy Pro adds unlimited scans, deeper insights, the doctor report, progress photos and themes: $29.99 a year with a 7-day free trial, or $9.99 a month (US prices).</p>
+  <h2>Privacy</h2>
+  <p>No account, no ads, no tracking. Your log stays on your iPhone. Only a barcode number or a typed food name is sent, to Open Food Facts, to look up a packaged food. <a href="privacy/">Privacy Policy</a></p>
+</section>
+<section>
+  <h2>Questions</h2>
+<details><summary>What is a good app to track GLP-1 shots on iPhone?</summary><p>Glipsy logs weekly GLP-1 shots and daily pills in two taps, reminds you on dose day, rotates injection sites on a body map, and keeps protein, fiber and water goals in the same place. The core tracker is free, with no account.</p></details>
+<details><summary>Does Glipsy work with semaglutide and tirzepatide?</summary><p>Yes. Glipsy works with weekly semaglutide and tirzepatide shots, daily GLP-1 pills, and more than one medicine at a time. You log the dose exactly as prescribed; Glipsy never suggests a dose.</p></details>
+<details><summary>How do I keep track of injection sites?</summary><p>Each time you log a shot, Glipsy shows a body map and suggests the site you used longest ago, so you rotate without having to remember.</p></details>
+<details><summary>How much protein should I eat on a GLP-1?</summary><p>Glipsy gives a starting daily protein, fiber and water goal from a few questions, based on published guidance, and you can change it any time. Ask your doctor or dietitian what is right for you.</p></details>
+<details><summary>Is Glipsy free?</summary><p>Yes. Doses, reminders, injection sites, food search, water, symptoms and weight are free for good. Glipsy Pro ($29.99 a year with a 7-day free trial, or $9.99 a month in the US) adds deeper insights, the doctor report, progress photos and themes.</p></details>
+<details><summary>Is Glipsy medical advice?</summary><p>No. Glipsy is a personal log. It never suggests a dose. Always follow your prescriber&#x27;s instructions. Its sources are listed at wicklightlabs.com/glipsy/sources/.</p></details>
+</section>
+<section>
+  <h2>More apps</h2>
+  <div class="others">
+<a href="../lampbible/"><img src="../lampbible/img/icon.png" alt="" width="36" height="36"><span>Lamp Bible</span></a>
+<a href="../lamplock/"><img src="../lamplock/img/icon.png" alt="" width="36" height="36"><span>Lamp Lock</span></a>
+<a href="../holovault/"><img src="../holovault/img/icon.png" alt="" width="36" height="36"><span>HoloVault</span></a>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="links"><a href="https://apps.apple.com/us/app/glipsy-glp-1-shot-tracker/id6823594933">Glipsy on the App Store</a><a href="support/">Support</a><a href="privacy/">Privacy Policy</a><a href="terms/">Terms of Use</a><a href="../">All apps</a></div>
+  <p>Made by <a href="../">Wicklight Labs</a>.</p>
+  <p>Glipsy is a personal log, not medical advice, and is not affiliated with any drug maker. Product data from Open Food Facts (ODbL).</p>
+</footer>
+</div>
+</body>
+</html>

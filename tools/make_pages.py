@@ -210,9 +210,72 @@ APPS = [
                    "and Yu-Gi-Oh! are trademarks of their respective owners. Prices are estimates based on market "
                    "data, not appraisals or financial advice."),
     },
+    {
+        "slug": "glipsy",
+        "name": "Glipsy",
+        "store_name": "Glipsy: GLP-1 Shot Tracker",
+        "store": "https://apps.apple.com/us/app/glipsy-glp-1-shot-tracker/id6823594933",
+        "category": "HealthApplication",
+        "title": "Glipsy: GLP-1 shot tracker with protein, fiber and water goals for iPhone",
+        "headline": "Your GLP-1 week, made gentle: every shot, protein and water in one place.",
+        "lead": ("Glipsy is a free iPhone tracker for people taking a weekly GLP-1 shot or a daily pill, such as "
+                 "semaglutide or tirzepatide. Log a dose in two taps, rotate injection sites, hit simple protein, "
+                 "fiber and water goals, and watch Glip's garden grow with every day you log."),
+        "summary": ("Free iPhone GLP-1 tracker: log weekly shots or daily pills with reminders, injection site "
+                    "rotation on a body map, protein, fiber and water goals with food search and barcode scan, "
+                    "symptoms and food noise check-ins, weight, a doctor report, widgets and Siri. A personal log, "
+                    "not medical advice. No account, no ads."),
+        "colors": {"bg": "#F6F1E4", "text": "#1E2B22", "muted": "#5E6B60", "accent": "#3E7650", "card": "#FFFFFF",
+                   "dark_bg": "#0F1712", "dark_text": "#EEF3EC", "dark_muted": "#AEBBAF", "dark_accent": "#86C99E", "dark_card": "#18221B"},
+        "accent2": "#E0702E",
+        "serif": False,
+        "features": [
+            ("Every dose, remembered", [
+                "Log a shot or pill in two taps, with a reminder on dose day",
+                "Injection site rotation on a body map: Glipsy suggests the spot you used longest ago",
+                "Weekly shots, daily pills and more than one medicine",
+                "Count your pens or pills and get a reminder when about a week is left"]),
+            ("Protein, fiber and water", [
+                "A daily plan to start from, with tips for nausea, constipation, food noise and keeping muscle",
+                "Search everyday foods, or scan a barcode or nutrition label",
+                "Glipsy counts protein and fiber, not calories",
+                "Water by the glass, from the app or a widget"]),
+            ("How you feel", [
+                "Nausea, constipation, tiredness, food noise and more, with how bad",
+                "Patterns across your dose week, and weight from Apple Health or logged in Glipsy",
+                "A doctor report to share or print before your appointment"]),
+            ("Glip's garden", [
+                "Every dose you log and every goal day grows a garden, from a seed to a meadow",
+                "Milestones bring new friends: a ladybug, a bird, a rainbow, fireflies",
+                "On your Home Screen and Lock Screen, with Siri and Control Center shortcuts"]),
+        ],
+        "price": ("Doses, reminders, injection sites, food search with 3 scans a day, water, symptoms, weight and "
+                  "the weekly recap are free, for good. Glipsy Pro adds unlimited scans, deeper insights, the doctor "
+                  "report, progress photos and themes: $29.99 a year with a 7-day free trial, or $9.99 a month (US prices)."),
+        "privacy": ("No account, no ads, no tracking. Your log stays on your iPhone. Only a barcode number or a typed "
+                    "food name is sent, to Open Food Facts, to look up a packaged food."),
+        "faq": [
+            ("What is a good app to track GLP-1 shots on iPhone?",
+             "Glipsy logs weekly GLP-1 shots and daily pills in two taps, reminds you on dose day, rotates injection sites on a body map, and keeps protein, fiber and water goals in the same place. The core tracker is free, with no account."),
+            ("Does Glipsy work with semaglutide and tirzepatide?",
+             "Yes. Glipsy works with weekly semaglutide and tirzepatide shots, daily GLP-1 pills, and more than one medicine at a time. You log the dose exactly as prescribed; Glipsy never suggests a dose."),
+            ("How do I keep track of injection sites?",
+             "Each time you log a shot, Glipsy shows a body map and suggests the site you used longest ago, so you rotate without having to remember."),
+            ("How much protein should I eat on a GLP-1?",
+             "Glipsy gives a starting daily protein, fiber and water goal from a few questions, based on published guidance, and you can change it any time. Ask your doctor or dietitian what is right for you."),
+            ("Is Glipsy free?",
+             "Yes. Doses, reminders, injection sites, food search, water, symptoms and weight are free for good. Glipsy Pro ($29.99 a year with a 7-day free trial, or $9.99 a month in the US) adds deeper insights, the doctor report, progress photos and themes."),
+            ("Is Glipsy medical advice?",
+             "No. Glipsy is a personal log. It never suggests a dose. Always follow your prescriber's instructions. Its sources are listed at wicklightlabs.com/glipsy/sources/."),
+        ],
+        "shots": [("1", "Your daily plan for protein, fiber and water"), ("2", "Protein and fiber in seconds"),
+                  ("3", "How you feel, in two taps"), ("4", "Patterns across your dose week"), ("5", "A private journal, no account")],
+        "notice": ("Glipsy is a personal log, not medical advice, and is not affiliated with any drug maker. "
+                   "Product data from Open Food Facts (ODbL)."),
+    },
 ]
 
-COMING = [{"name": "Glipsy", "line": "A GLP-1 shot tracker with protein and water goals. Coming soon to the App Store."}]
+COMING = []
 
 
 def esc(text):
@@ -406,7 +469,7 @@ def home_page():
     }
     org = {"@context": "https://schema.org", "@type": "Organization", "name": STUDIO, "url": f"{SITE}/", "logo": f"{SITE}/lampbible/img/icon-512.png"}
     extra = "\n".join(f'<script type="application/ld+json">{json.dumps(block, ensure_ascii=False)}</script>' for block in (org, listing))
-    return head("Wicklight Labs: small, private iPhone apps", "Wicklight Labs makes small, private iPhone apps: Lamp Bible (a daily Bible verse widget), Lamp Lock (a Christian app blocker) and HoloVault (a TCG card scanner).",
+    return head("Wicklight Labs: small, private iPhone apps", "Wicklight Labs makes small, private iPhone apps: Lamp Bible (a daily Bible verse widget), Lamp Lock (a Christian app blocker), HoloVault (a TCG card scanner) and Glipsy (a GLP-1 shot tracker).",
                 f"{SITE}/", f"{SITE}/lampbible/img/icon-512.png", style, extra) + f"""<body>
 <div class="wrap">
 <main>
@@ -440,7 +503,7 @@ def sitemap():
     urls = [f"{SITE}/"]
     for a in APPS:
         urls.append(f"{SITE}/{a['slug']}/")
-        for sub in ("support", "privacy", "terms"):
+        for sub in ("support", "privacy", "terms", "sources"):
             if (ROOT / a["slug"] / sub / "index.html").exists():
                 urls.append(f"{SITE}/{a['slug']}/{sub}/")
     body = "\n".join(f"  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>" for u in urls)
@@ -448,7 +511,7 @@ def sitemap():
 
 
 def llms():
-    parts = ["# Wicklight Labs: Lamp Bible, Lamp Lock and HoloVault",
+    parts = ["# Wicklight Labs: Lamp Bible, Lamp Lock, HoloVault and Glipsy",
              "",
              "> Wicklight Labs makes small, private iPhone apps. No accounts, no ads, no tracking. All are free to download with optional subscriptions.",
              ""]
@@ -459,7 +522,8 @@ def llms():
                   f"- Price: {a['price']}",
                   f"- Privacy: {a['privacy']}", ""]
         parts += ["Common questions:", ""] + [f"- {q} {ans}" for q, ans in a["faq"]] + [""]
-    parts += ["## Coming soon", ""] + [f"- {c['name']}: {c['line']}" for c in COMING] + [""]
+    if COMING:
+        parts += ["## Coming soon", ""] + [f"- {c['name']}: {c['line']}" for c in COMING] + [""]
     return "\n".join(parts)
 
 
